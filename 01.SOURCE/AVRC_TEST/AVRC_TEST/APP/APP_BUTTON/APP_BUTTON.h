@@ -11,7 +11,7 @@
 
 #define BUTTON_PRESSED   0u
 #define BUTTON_RELEASED  1u
-#include <stdint.h>
+#include "stdint.h"
 
 void app_button_update();
 uint8_t app_button_get_state();

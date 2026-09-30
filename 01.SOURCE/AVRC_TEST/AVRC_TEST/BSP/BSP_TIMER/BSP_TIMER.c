@@ -1,8 +1,8 @@
 #include "BOARD.h"
 #include "BSP_TIMER.h"
 
-#include <avr/io.h>
-#include <avr/interrupt.h>
+#include "avr/io.h"
+#include "avr/interrupt.h"
 
 volatile uint32_t sys_time_count = 0u;
 extern volatile uint16_t	app_button_timer_count;

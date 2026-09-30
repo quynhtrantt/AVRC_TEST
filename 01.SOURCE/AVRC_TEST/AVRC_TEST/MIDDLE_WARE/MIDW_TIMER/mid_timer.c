@@ -37,7 +37,7 @@ uint32_t Middleware_Timer_GetElapsed(Middleware_Timer_t *timer)
 	{
 		return 0U;
 	}
-
+ 
 	return BSP_GetSysTimeMs() - timer->start_time;
 }
 

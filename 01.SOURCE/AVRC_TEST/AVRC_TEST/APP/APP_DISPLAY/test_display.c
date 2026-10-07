@@ -6,7 +6,6 @@
 #include "BSP_LCD.h"
 #include "app_display.h"
 #include "DATA_DHT.h"
-#include "APP_DHT.h"
 #include "BSP_BUTTON.h"
 #include "APP_BUTTON.h"
 #include "BSP_TIMER.h"

@@ -103,6 +103,16 @@
       <Value>../DATA</Value>
       <Value>../DRIVER</Value>
       <Value>../MIDDLE_WARE</Value>
+      <Value>../BSP/BSP_BUTTON</Value>
+      <Value>../BSP/BSP_LCD</Value>
+      <Value>../DRIVER/DEVICES/DRIVER_LCD</Value>
+      <Value>../DATA/DATA_DHT</Value>
+      <Value>../APP/APP_DISPLAY</Value>
+      <Value>../APP/APP_BUTTON</Value>
+      <Value>../DATA/DATA_BUTTON</Value>
+      <Value>../BSP/BSP_TIMER</Value>
+      <Value>../DRIVER/COMPONENTS/DRIVER_GPIO</Value>
+      <Value>../BSP/BSP_UART</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcc.compiler.optimization.level>
@@ -137,7 +147,19 @@
     <Compile Include="APP\APP_DISPLAY\app_display.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="APP\APP_DISPLAY\APP_LCD_3.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\APP_DISPLAY\APP_LCD_3.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="APP\APP_DISPLAY\test_display.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\APP_UART\APP_UART.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\APP_UART\APP_UART.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="BSP\BOARD.h">
@@ -171,6 +193,15 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="BSP\BSP_TIMER\BSP_TIMER.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="BSP\BSP_UART\BSP_UART.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="BSP\BSP_UART\BSP_UART.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="BSP\BSP_UART\UART_CONFIG.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="BSP\common_macros.h">
@@ -215,10 +246,22 @@
     <Compile Include="MIDDLE_WARE\MIDW_TIMER\mid_timer.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="MIDDLE_WARE\MIDW_UART\fifo.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MIDDLE_WARE\MIDW_UART\fifo.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="MIDDLE_WARE\MIDW_UART\mid_uart.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MIDDLE_WARE\MIDW_UART\mid_uart.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MIDDLE_WARE\prinf\printf.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MIDDLE_WARE\prinf\printf.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
@@ -226,6 +269,7 @@
     <Folder Include="APP" />
     <Folder Include="APP\APP_DISPLAY" />
     <Folder Include="APP\APP_BUTTON" />
+    <Folder Include="APP\APP_UART" />
     <Folder Include="BSP" />
     <Folder Include="BSP\BSP_BUTTON" />
     <Folder Include="BSP\BSP_LCD" />
@@ -245,6 +289,7 @@
     <Folder Include="MIDDLE_WARE" />
     <Folder Include="MIDDLE_WARE\MIDW_TIMER" />
     <Folder Include="MIDDLE_WARE\MIDW_UART" />
+    <Folder Include="MIDDLE_WARE\prinf" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

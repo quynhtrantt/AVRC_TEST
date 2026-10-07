@@ -36,6 +36,7 @@ SUBDIRS :=  \
 ../APP \
 ../APP/APP_DISPLAY \
 ../APP/APP_BUTTON \
+../APP/APP_UART \
 ../BSP \
 ../BSP/BSP_BUTTON \
 ../BSP/BSP_LCD \
@@ -54,19 +55,23 @@ SUBDIRS :=  \
 ../DRIVER/DEVICES/DRIVER_UART \
 ../MIDDLE_WARE \
 ../MIDDLE_WARE/MIDW_TIMER \
-../MIDDLE_WARE/MIDW_UART
+../MIDDLE_WARE/MIDW_UART \
+../MIDDLE_WARE/prinf
 
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../APP/APP_BUTTON/APP_BUTTON.c \
 ../APP/APP_DISPLAY/app_display.c \
+../APP/APP_DISPLAY/APP_LCD_3.c \
 ../APP/APP_DISPLAY/test_display.c \
+../APP/APP_UART/APP_UART.c \
 ../BSP/BSP_BUTTON/BSP_BUTTON.c \
 ../BSP/BSP_DHT/BSP_DHT.c \
 ../BSP/BSP_LCD/BSP_LCD.c \
 ../BSP/BSP_LED/BSP_LED.c \
 ../BSP/BSP_TIMER/BSP_TIMER.c \
+../BSP/BSP_UART/BSP_UART.c \
 ../DATA/DATA_BUTTON/DATA_BUTTON.c \
 ../DATA/DATA_DHT/DATA_DHT.c \
 ../DRIVER/COMPONENTS/DRIVER_GPIO/GPIO.c \
@@ -74,7 +79,9 @@ C_SRCS +=  \
 ../DRIVER/DEVICES/DRIVER_UART/UART.c \
 ../main.c \
 ../MIDDLE_WARE/MIDW_TIMER/mid_timer.c \
-../MIDDLE_WARE/MIDW_UART/mid_uart.c
+../MIDDLE_WARE/MIDW_UART/fifo.c \
+../MIDDLE_WARE/MIDW_UART/mid_uart.c \
+../MIDDLE_WARE/prinf/printf.c
 
 
 PREPROCESSING_SRCS += 
@@ -86,12 +93,15 @@ ASM_SRCS +=
 OBJS +=  \
 APP/APP_BUTTON/APP_BUTTON.o \
 APP/APP_DISPLAY/app_display.o \
+APP/APP_DISPLAY/APP_LCD_3.o \
 APP/APP_DISPLAY/test_display.o \
+APP/APP_UART/APP_UART.o \
 BSP/BSP_BUTTON/BSP_BUTTON.o \
 BSP/BSP_DHT/BSP_DHT.o \
 BSP/BSP_LCD/BSP_LCD.o \
 BSP/BSP_LED/BSP_LED.o \
 BSP/BSP_TIMER/BSP_TIMER.o \
+BSP/BSP_UART/BSP_UART.o \
 DATA/DATA_BUTTON/DATA_BUTTON.o \
 DATA/DATA_DHT/DATA_DHT.o \
 DRIVER/COMPONENTS/DRIVER_GPIO/GPIO.o \
@@ -99,17 +109,22 @@ DRIVER/DEVICES/DRIVER_LCD/LCD.o \
 DRIVER/DEVICES/DRIVER_UART/UART.o \
 main.o \
 MIDDLE_WARE/MIDW_TIMER/mid_timer.o \
-MIDDLE_WARE/MIDW_UART/mid_uart.o
+MIDDLE_WARE/MIDW_UART/fifo.o \
+MIDDLE_WARE/MIDW_UART/mid_uart.o \
+MIDDLE_WARE/prinf/printf.o
 
 OBJS_AS_ARGS +=  \
 APP/APP_BUTTON/APP_BUTTON.o \
 APP/APP_DISPLAY/app_display.o \
+APP/APP_DISPLAY/APP_LCD_3.o \
 APP/APP_DISPLAY/test_display.o \
+APP/APP_UART/APP_UART.o \
 BSP/BSP_BUTTON/BSP_BUTTON.o \
 BSP/BSP_DHT/BSP_DHT.o \
 BSP/BSP_LCD/BSP_LCD.o \
 BSP/BSP_LED/BSP_LED.o \
 BSP/BSP_TIMER/BSP_TIMER.o \
+BSP/BSP_UART/BSP_UART.o \
 DATA/DATA_BUTTON/DATA_BUTTON.o \
 DATA/DATA_DHT/DATA_DHT.o \
 DRIVER/COMPONENTS/DRIVER_GPIO/GPIO.o \
@@ -117,17 +132,22 @@ DRIVER/DEVICES/DRIVER_LCD/LCD.o \
 DRIVER/DEVICES/DRIVER_UART/UART.o \
 main.o \
 MIDDLE_WARE/MIDW_TIMER/mid_timer.o \
-MIDDLE_WARE/MIDW_UART/mid_uart.o
+MIDDLE_WARE/MIDW_UART/fifo.o \
+MIDDLE_WARE/MIDW_UART/mid_uart.o \
+MIDDLE_WARE/prinf/printf.o
 
 C_DEPS +=  \
 APP/APP_BUTTON/APP_BUTTON.d \
 APP/APP_DISPLAY/app_display.d \
+APP/APP_DISPLAY/APP_LCD_3.d \
 APP/APP_DISPLAY/test_display.d \
+APP/APP_UART/APP_UART.d \
 BSP/BSP_BUTTON/BSP_BUTTON.d \
 BSP/BSP_DHT/BSP_DHT.d \
 BSP/BSP_LCD/BSP_LCD.d \
 BSP/BSP_LED/BSP_LED.d \
 BSP/BSP_TIMER/BSP_TIMER.d \
+BSP/BSP_UART/BSP_UART.d \
 DATA/DATA_BUTTON/DATA_BUTTON.d \
 DATA/DATA_DHT/DATA_DHT.d \
 DRIVER/COMPONENTS/DRIVER_GPIO/GPIO.d \
@@ -135,17 +155,22 @@ DRIVER/DEVICES/DRIVER_LCD/LCD.d \
 DRIVER/DEVICES/DRIVER_UART/UART.d \
 main.d \
 MIDDLE_WARE/MIDW_TIMER/mid_timer.d \
-MIDDLE_WARE/MIDW_UART/mid_uart.d
+MIDDLE_WARE/MIDW_UART/fifo.d \
+MIDDLE_WARE/MIDW_UART/mid_uart.d \
+MIDDLE_WARE/prinf/printf.d
 
 C_DEPS_AS_ARGS +=  \
 APP/APP_BUTTON/APP_BUTTON.d \
 APP/APP_DISPLAY/app_display.d \
+APP/APP_DISPLAY/APP_LCD_3.d \
 APP/APP_DISPLAY/test_display.d \
+APP/APP_UART/APP_UART.d \
 BSP/BSP_BUTTON/BSP_BUTTON.d \
 BSP/BSP_DHT/BSP_DHT.d \
 BSP/BSP_LCD/BSP_LCD.d \
 BSP/BSP_LED/BSP_LED.d \
 BSP/BSP_TIMER/BSP_TIMER.d \
+BSP/BSP_UART/BSP_UART.d \
 DATA/DATA_BUTTON/DATA_BUTTON.d \
 DATA/DATA_DHT/DATA_DHT.d \
 DRIVER/COMPONENTS/DRIVER_GPIO/GPIO.d \
@@ -153,7 +178,9 @@ DRIVER/DEVICES/DRIVER_LCD/LCD.d \
 DRIVER/DEVICES/DRIVER_UART/UART.d \
 main.d \
 MIDDLE_WARE/MIDW_TIMER/mid_timer.d \
-MIDDLE_WARE/MIDW_UART/mid_uart.d
+MIDDLE_WARE/MIDW_UART/fifo.d \
+MIDDLE_WARE/MIDW_UART/mid_uart.d \
+MIDDLE_WARE/prinf/printf.d
 
 OUTPUT_FILE_PATH +=AVRC_TEST.elf
 
@@ -172,112 +199,147 @@ LINKER_SCRIPT_DEP+=
 APP/APP_BUTTON/APP_BUTTON.o: ../APP/APP_BUTTON/APP_BUTTON.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE" -I"../BSP/BSP_BUTTON" -I"../BSP/BSP_LCD" -I"../DRIVER/DEVICES/DRIVER_LCD" -I"../DATA/DATA_DHT" -I"../APP/APP_DISPLAY" -I"../APP/APP_BUTTON" -I"../DATA/DATA_BUTTON" -I"../BSP/BSP_TIMER" -I"../DRIVER/COMPONENTS/DRIVER_GPIO" -I"../BSP/BSP_UART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 APP/APP_DISPLAY/app_display.o: ../APP/APP_DISPLAY/app_display.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE" -I"../BSP/BSP_BUTTON" -I"../BSP/BSP_LCD" -I"../DRIVER/DEVICES/DRIVER_LCD" -I"../DATA/DATA_DHT" -I"../APP/APP_DISPLAY" -I"../APP/APP_BUTTON" -I"../DATA/DATA_BUTTON" -I"../BSP/BSP_TIMER" -I"../DRIVER/COMPONENTS/DRIVER_GPIO" -I"../BSP/BSP_UART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+APP/APP_DISPLAY/APP_LCD_3.o: ../APP/APP_DISPLAY/APP_LCD_3.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE" -I"../BSP/BSP_BUTTON" -I"../BSP/BSP_LCD" -I"../DRIVER/DEVICES/DRIVER_LCD" -I"../DATA/DATA_DHT" -I"../APP/APP_DISPLAY" -I"../APP/APP_BUTTON" -I"../DATA/DATA_BUTTON" -I"../BSP/BSP_TIMER" -I"../DRIVER/COMPONENTS/DRIVER_GPIO" -I"../BSP/BSP_UART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 APP/APP_DISPLAY/test_display.o: ../APP/APP_DISPLAY/test_display.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE" -I"../BSP/BSP_BUTTON" -I"../BSP/BSP_LCD" -I"../DRIVER/DEVICES/DRIVER_LCD" -I"../DATA/DATA_DHT" -I"../APP/APP_DISPLAY" -I"../APP/APP_BUTTON" -I"../DATA/DATA_BUTTON" -I"../BSP/BSP_TIMER" -I"../DRIVER/COMPONENTS/DRIVER_GPIO" -I"../BSP/BSP_UART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+APP/APP_UART/APP_UART.o: ../APP/APP_UART/APP_UART.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE" -I"../BSP/BSP_BUTTON" -I"../BSP/BSP_LCD" -I"../DRIVER/DEVICES/DRIVER_LCD" -I"../DATA/DATA_DHT" -I"../APP/APP_DISPLAY" -I"../APP/APP_BUTTON" -I"../DATA/DATA_BUTTON" -I"../BSP/BSP_TIMER" -I"../DRIVER/COMPONENTS/DRIVER_GPIO" -I"../BSP/BSP_UART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 BSP/BSP_BUTTON/BSP_BUTTON.o: ../BSP/BSP_BUTTON/BSP_BUTTON.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE" -I"../BSP/BSP_BUTTON" -I"../BSP/BSP_LCD" -I"../DRIVER/DEVICES/DRIVER_LCD" -I"../DATA/DATA_DHT" -I"../APP/APP_DISPLAY" -I"../APP/APP_BUTTON" -I"../DATA/DATA_BUTTON" -I"../BSP/BSP_TIMER" -I"../DRIVER/COMPONENTS/DRIVER_GPIO" -I"../BSP/BSP_UART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 BSP/BSP_DHT/BSP_DHT.o: ../BSP/BSP_DHT/BSP_DHT.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE" -I"../BSP/BSP_BUTTON" -I"../BSP/BSP_LCD" -I"../DRIVER/DEVICES/DRIVER_LCD" -I"../DATA/DATA_DHT" -I"../APP/APP_DISPLAY" -I"../APP/APP_BUTTON" -I"../DATA/DATA_BUTTON" -I"../BSP/BSP_TIMER" -I"../DRIVER/COMPONENTS/DRIVER_GPIO" -I"../BSP/BSP_UART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 BSP/BSP_LCD/BSP_LCD.o: ../BSP/BSP_LCD/BSP_LCD.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE" -I"../BSP/BSP_BUTTON" -I"../BSP/BSP_LCD" -I"../DRIVER/DEVICES/DRIVER_LCD" -I"../DATA/DATA_DHT" -I"../APP/APP_DISPLAY" -I"../APP/APP_BUTTON" -I"../DATA/DATA_BUTTON" -I"../BSP/BSP_TIMER" -I"../DRIVER/COMPONENTS/DRIVER_GPIO" -I"../BSP/BSP_UART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 BSP/BSP_LED/BSP_LED.o: ../BSP/BSP_LED/BSP_LED.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE" -I"../BSP/BSP_BUTTON" -I"../BSP/BSP_LCD" -I"../DRIVER/DEVICES/DRIVER_LCD" -I"../DATA/DATA_DHT" -I"../APP/APP_DISPLAY" -I"../APP/APP_BUTTON" -I"../DATA/DATA_BUTTON" -I"../BSP/BSP_TIMER" -I"../DRIVER/COMPONENTS/DRIVER_GPIO" -I"../BSP/BSP_UART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 BSP/BSP_TIMER/BSP_TIMER.o: ../BSP/BSP_TIMER/BSP_TIMER.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE" -I"../BSP/BSP_BUTTON" -I"../BSP/BSP_LCD" -I"../DRIVER/DEVICES/DRIVER_LCD" -I"../DATA/DATA_DHT" -I"../APP/APP_DISPLAY" -I"../APP/APP_BUTTON" -I"../DATA/DATA_BUTTON" -I"../BSP/BSP_TIMER" -I"../DRIVER/COMPONENTS/DRIVER_GPIO" -I"../BSP/BSP_UART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+BSP/BSP_UART/BSP_UART.o: ../BSP/BSP_UART/BSP_UART.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE" -I"../BSP/BSP_BUTTON" -I"../BSP/BSP_LCD" -I"../DRIVER/DEVICES/DRIVER_LCD" -I"../DATA/DATA_DHT" -I"../APP/APP_DISPLAY" -I"../APP/APP_BUTTON" -I"../DATA/DATA_BUTTON" -I"../BSP/BSP_TIMER" -I"../DRIVER/COMPONENTS/DRIVER_GPIO" -I"../BSP/BSP_UART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 DATA/DATA_BUTTON/DATA_BUTTON.o: ../DATA/DATA_BUTTON/DATA_BUTTON.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE" -I"../BSP/BSP_BUTTON" -I"../BSP/BSP_LCD" -I"../DRIVER/DEVICES/DRIVER_LCD" -I"../DATA/DATA_DHT" -I"../APP/APP_DISPLAY" -I"../APP/APP_BUTTON" -I"../DATA/DATA_BUTTON" -I"../BSP/BSP_TIMER" -I"../DRIVER/COMPONENTS/DRIVER_GPIO" -I"../BSP/BSP_UART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 DATA/DATA_DHT/DATA_DHT.o: ../DATA/DATA_DHT/DATA_DHT.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE" -I"../BSP/BSP_BUTTON" -I"../BSP/BSP_LCD" -I"../DRIVER/DEVICES/DRIVER_LCD" -I"../DATA/DATA_DHT" -I"../APP/APP_DISPLAY" -I"../APP/APP_BUTTON" -I"../DATA/DATA_BUTTON" -I"../BSP/BSP_TIMER" -I"../DRIVER/COMPONENTS/DRIVER_GPIO" -I"../BSP/BSP_UART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 DRIVER/COMPONENTS/DRIVER_GPIO/GPIO.o: ../DRIVER/COMPONENTS/DRIVER_GPIO/GPIO.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE" -I"../BSP/BSP_BUTTON" -I"../BSP/BSP_LCD" -I"../DRIVER/DEVICES/DRIVER_LCD" -I"../DATA/DATA_DHT" -I"../APP/APP_DISPLAY" -I"../APP/APP_BUTTON" -I"../DATA/DATA_BUTTON" -I"../BSP/BSP_TIMER" -I"../DRIVER/COMPONENTS/DRIVER_GPIO" -I"../BSP/BSP_UART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 DRIVER/DEVICES/DRIVER_LCD/LCD.o: ../DRIVER/DEVICES/DRIVER_LCD/LCD.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE" -I"../BSP/BSP_BUTTON" -I"../BSP/BSP_LCD" -I"../DRIVER/DEVICES/DRIVER_LCD" -I"../DATA/DATA_DHT" -I"../APP/APP_DISPLAY" -I"../APP/APP_BUTTON" -I"../DATA/DATA_BUTTON" -I"../BSP/BSP_TIMER" -I"../DRIVER/COMPONENTS/DRIVER_GPIO" -I"../BSP/BSP_UART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 DRIVER/DEVICES/DRIVER_UART/UART.o: ../DRIVER/DEVICES/DRIVER_UART/UART.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE" -I"../BSP/BSP_BUTTON" -I"../BSP/BSP_LCD" -I"../DRIVER/DEVICES/DRIVER_LCD" -I"../DATA/DATA_DHT" -I"../APP/APP_DISPLAY" -I"../APP/APP_BUTTON" -I"../DATA/DATA_BUTTON" -I"../BSP/BSP_TIMER" -I"../DRIVER/COMPONENTS/DRIVER_GPIO" -I"../BSP/BSP_UART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 ./main.o: .././main.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE" -I"../BSP/BSP_BUTTON" -I"../BSP/BSP_LCD" -I"../DRIVER/DEVICES/DRIVER_LCD" -I"../DATA/DATA_DHT" -I"../APP/APP_DISPLAY" -I"../APP/APP_BUTTON" -I"../DATA/DATA_BUTTON" -I"../BSP/BSP_TIMER" -I"../DRIVER/COMPONENTS/DRIVER_GPIO" -I"../BSP/BSP_UART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 MIDDLE_WARE/MIDW_TIMER/mid_timer.o: ../MIDDLE_WARE/MIDW_TIMER/mid_timer.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE" -I"../BSP/BSP_BUTTON" -I"../BSP/BSP_LCD" -I"../DRIVER/DEVICES/DRIVER_LCD" -I"../DATA/DATA_DHT" -I"../APP/APP_DISPLAY" -I"../APP/APP_BUTTON" -I"../DATA/DATA_BUTTON" -I"../BSP/BSP_TIMER" -I"../DRIVER/COMPONENTS/DRIVER_GPIO" -I"../BSP/BSP_UART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MIDDLE_WARE/MIDW_UART/fifo.o: ../MIDDLE_WARE/MIDW_UART/fifo.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE" -I"../BSP/BSP_BUTTON" -I"../BSP/BSP_LCD" -I"../DRIVER/DEVICES/DRIVER_LCD" -I"../DATA/DATA_DHT" -I"../APP/APP_DISPLAY" -I"../APP/APP_BUTTON" -I"../DATA/DATA_BUTTON" -I"../BSP/BSP_TIMER" -I"../DRIVER/COMPONENTS/DRIVER_GPIO" -I"../BSP/BSP_UART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 MIDDLE_WARE/MIDW_UART/mid_uart.o: ../MIDDLE_WARE/MIDW_UART/mid_uart.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE" -I"../BSP/BSP_BUTTON" -I"../BSP/BSP_LCD" -I"../DRIVER/DEVICES/DRIVER_LCD" -I"../DATA/DATA_DHT" -I"../APP/APP_DISPLAY" -I"../APP/APP_BUTTON" -I"../DATA/DATA_BUTTON" -I"../BSP/BSP_TIMER" -I"../DRIVER/COMPONENTS/DRIVER_GPIO" -I"../BSP/BSP_UART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MIDDLE_WARE/prinf/printf.o: ../MIDDLE_WARE/prinf/printf.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../BSP" -I"../DATA" -I"../DRIVER" -I"../MIDDLE_WARE" -I"../BSP/BSP_BUTTON" -I"../BSP/BSP_LCD" -I"../DRIVER/DEVICES/DRIVER_LCD" -I"../DATA/DATA_DHT" -I"../APP/APP_DISPLAY" -I"../APP/APP_BUTTON" -I"../DATA/DATA_BUTTON" -I"../BSP/BSP_TIMER" -I"../DRIVER/COMPONENTS/DRIVER_GPIO" -I"../BSP/BSP_UART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega324p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega324p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 

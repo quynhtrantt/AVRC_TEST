@@ -1,7 +1,7 @@
 #include "BSP_DHT.h"
 #include "BOARD.h"
-#include <avr/io.h>
-#include <util/delay.h>
+#include "avr/io.h"
+#include "util/delay.h"
 
 
 static void DHT_SetOutput(void)
